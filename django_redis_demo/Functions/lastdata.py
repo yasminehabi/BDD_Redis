@@ -27,11 +27,12 @@ def setlastdata():
           keysword.sort()
           for j in keysword:
               sortedval[j]=redis_instance.get(j)
-          iteems[word]=sortedval[j]
+          iteems[word]=redis_instance.get(j)
           items={}
           sortedval={}
        
           val=redis_instance.get(j)
+          
           
           redis_inst.set(name=word,value=val)
 

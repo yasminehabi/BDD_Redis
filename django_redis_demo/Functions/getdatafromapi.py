@@ -86,14 +86,21 @@ def filter(rows,redis):
 
     
 if __name__=="__main__":
-    tickers=["TSLA","AAPL","MSFT","GOOGL","AMZN","BRK-A","NVDA","TSM","META","NKE","MSFT","CSCO","MCD","KO","EURUSD=X","USD","JPY=X","GBPUSD=X","NZDUSD=X","AUDUSD=X","SGD=X","DZDUSD=X","KWDUSD=X"]
-    
+    tickers=["TSLA","AAPL","MSFT","GOOGL","AMZN","BRK-A","NVDA","TSM","META","NKE","MSFT","CSCO","MCD","KO"]
+    #"TSLA","AAPL","MSFT","GOOGL","AMZN",
     
     for ticker in tickers:
         rc=connectredis(0)
         data=getdata(ticker,"1m")
         datatocsv(data,ticker)
         lst=setdataredis(rc,ticker)
+        
+    devises=["EURUSD=X","USD","JPY=X","GBPUSD=X","NZDUSD=X","AUDUSD=X","SGD=X","DZDUSD=X","KWDUSD=X"]
+    for devise in devises:
+        rc=connectredis(0)
+        data=getdata(devise,"1d")
+        datatocsv(data,devise)
+        lst=setdataredis(rc,devise)
         
  
         
