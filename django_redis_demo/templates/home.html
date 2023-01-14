@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Home PAGE </title>
+        <link rel="stylesheet" href="./home.css"> 
+
+        <script src="https://kit.fontawesome.com/5b0c203f04.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type='text/javascript'>
+          google.charts.load('current', {'packages':['annotationchart']});
+          google.charts.setOnLoadCallback(drawChart);
+    
+          function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('date', 'Date');
+            data.addColumn('number', 'Kepler-22b mission');
+            data.addColumn('string', 'Kepler title');
+            data.addColumn('string', 'Kepler text');
+            data.addColumn('number', 'Gliese 163 mission');
+            data.addColumn('string', 'Gliese title');
+            data.addColumn('string', 'Gliese text');
+            data.addRows([
+              [new Date(2314, 2, 15), 12400, undefined, undefined,
+                                      10645, undefined, undefined],
+              [new Date(2314, 2, 16), 24045, 'Lalibertines', 'First encounter',
+                                      12374, undefined, undefined],
+              [new Date(2314, 2, 17), 35022, 'Lalibertines', 'They are very tall',
+                                      15766, 'Gallantors', 'First Encounter'],
+              [new Date(2314, 2, 18), 12284, 'Lalibertines', 'Attack on our crew!',
+                                      34334, 'Gallantors', 'Statement of shared principles'],
+              [new Date(2314, 2, 19), 8476, 'Lalibertines', 'Heavy casualties',
+                                      66467, 'Gallantors', 'Mysteries revealed'],
+              [new Date(2314, 2, 20), 0, 'Lalibertines', 'All crew lost',
+                                      79463, 'Gallantors', 'Omniscience achieved']
+            ]);
+    
+            var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'));
+    
+            var options = {
+              displayAnnotations: true
+            };
+    
+            chart.draw(data, options);
+          }
+        </script>
+        
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+    
+          function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'x');
+            data.addColumn('number', 'values');
+            data.addColumn({id:'i0', type:'number', role:'interval'});
+            data.addColumn({id:'i1', type:'number', role:'interval'});
+            data.addColumn({id:'i2', type:'number', role:'interval'});
+            data.addColumn({id:'i2', type:'number', role:'interval'});
+            data.addColumn({id:'i2', type:'number', role:'interval'});
+            data.addColumn({id:'i2', type:'number', role:'interval'});
+      
+            data.addRows([
+                [1, 100, 90, 110, 85, 96, 104, 120],
+                [2, 120, 95, 130, 90, 113, 124, 140],
+                [3, 130, 105, 140, 100, 117, 133, 139],
+                [4, 90, 85, 95, 85, 88, 92, 95],
+                [5, 70, 74, 63, 67, 69, 70, 72],
+                [6, 30, 39, 22, 21, 28, 34, 40],
+                [7, 80, 77, 83, 70, 77, 85, 90],
+                [8, 100, 90, 110, 85, 95, 102, 110]]);
+      
+            var options_lines = {
+                title: 'Graphe representant les changements de taux des actions',
+                curveType: 'function',
+                lineWidth: 4,
+                intervals: { 'style':'line' },
+                legend: 'none'
+            };
+      
+            var chart_lines = new google.visualization.LineChart(document.getElementById('chart_lines'));
+            chart_lines.draw(data, options_lines);
+          }
+        </script>
+    </head>
+    <body>
+        
+    <div class="first">
+        <nav>
+        <ul class="navbar">
+          <li><a href="#">Home</a></li>
+          <li><a href="#sec_far_down">FAQs</a></li>
+          <li><a href="#sec2_far_down">A propos de nous</a></li>
+        </ul>
+       
+        </nav>
+    </div>
+      <p1>BYB</p1>
+      <div class="logo">BoostYourBusiness</div>
+        <div class="search">
+            <input type="search" placeholder=" Type To Search ...">
+        </div>
+    <h3>Consultez les sites des entreprises les plus populaires en ce moment sur votre site BYB ! </h3>
+    <h5>Affichage maximum de 20 entreprises <br>
+        Explorez pour une meilleure expérience ! </h5>
+    <div class="icon">
+        <i class="fa-solid fa-magnifying-glass-dollar"></i>       
+    </div>
+   
+
+
+    <div id='chart_div' style='width: 470px; height: 370px;position: absolute ; top : 300px ; left : 60%;' ></div>
+    <div id="chart_lines" style="width: 470px; height: 370px;position: absolute ; top : 800px ; left : 60%;"></div>
+  
+    <!-- <div class="icon2">
+        <i class="fa-regular fa-chart-line"></i>    </div>
+    <div class="icon3">
+        <i class="fa-thin fa-building"></i>
+    </div>
+    <div class="icon4">
+        <i class="fa-brands fa-google"></i>
+    </div> -->
+    <h1>{{ items.i }}</h>
+    <table class="content-table">
+
+        <thead>
+          <tr>
+            <th>Nom de l’entreprise </th>  
+
+            <th> Action en cours</th>
+            <th>Afficher ses actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for key, value in items.items %}
+          <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+            
+            <td><button2 type="button">Afficher</button></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    <br>
+    <br>
+    <div class="p2">
+        <p2>*Les chiffres d'affaires ainsi que les actions des entreprises changent ultérieurement . <br> Avec BYB soyez certain que vous consultez que les nouveautés.</p2>
+        </div>
+       <img class="img1" src = "faqs.svg">
+        <div class="p3">
+            <p3 id="sec_far_down">FAQ à propos des entreprises les plus polpulaires et influentes au monde </p3>
+            </div>
+            <div class="p4">
+                <p4>Question : Quelle est l'entreprise la plus populaire durant l'an dernier 2022 ? <br> Réponse : Apple</p4>
+            </div>
+            <div class="p5">
+                <p5>Question : Quelles sont les 5 entreprises les plus populaires durant l'an dernier 2022? <br> Réponse : <br> 1.Apple <br> 2.Google <br> 3.Amazon <br> 4.Microsoft <br> 5.Tencent</p5>
+                </div>
+                <div class="p6">
+                    <p6>Question : Quelle était l'entreprise la plus rentable durant l'an dernier 2022? <br> Réponse : Saudi Aramco </p6>
+                    </div>
+
+                    <div class="p7">
+                      <p7 id ="sec2_far_down">Découvrez plus notre site BYB ici !</p7>
+                      </div>
+                      <img class="img2" src = "img2.svg">
+                      <img class="img3" src = "brs.jpeg">
+                      <img class="img4" src = "ent.jpeg">
+                      <img class="img5" src = "dev.jpeg">
+                      <div class="p8">
+                        <p8> 
+                          Consultez tous qui concerne les changements <br>des bourses  mondiales du moment <br>actuelle et même <br>  celle que notre site prédicte dans quelques jours<br> plutard , grâce à son intelligence et sa performance .
+                        </p8>
+                        </div>
+
+                    <div class="p9">
+                      <p9>Découvrez les nouveautés des entreprises <br> les plus populaires mondialement au <br> niveau de l'accueil du site<br> et soyez au courant de leurs dernières nouvelles .</p9>
+                    </div>
+                    <div class="p10">
+                      <p10>Sur le site , vous allez obtenir tous<br> les changements qui s'appliquent sur <br>la monnaie internationale partout dans le monde.</p10>
+                    </div>
+                  <footer class="footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="footer-col">
+                                    <h4>company</h4>
+                                    <ul>
+                                        <li><a href="#">about us</a></li>
+                                        <li><a href="#">our services</a></li>
+                                        <li><a href="#">privacy policy</a></li>
+                                        <li><a href="#">affiliate program</a></li>
+                                    </ul>
+                                </div>
+                                <div class="footer-col">
+                                    <h4>get help</h4>
+                                    <ul>
+                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="#">shipping</a></li>
+                                        <li><a href="#">returns</a></li>
+                                        <li><a href="#">order status</a></li>
+                                    </ul>
+                                </div>
+                              
+                                <div class="footer-col">
+                                    <h4>follow us</h4>
+                                    <div class="social-links">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   </footer>
+                 
+
+    </body>
+</html>
