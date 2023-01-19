@@ -14,8 +14,13 @@ def setlastdata():
         sortedval={}
 
 
+        
         wordlist = ["TSLA","AAPL","MSFT","GOOGL","AMZN","BRK-A","NVDA","TSM","META","NKE","MSFT","CSCO","MCD","KO","EURUSD=X","USD","JPY=X","GBPUSD=X","NZDUSD=X","AUDUSD=X","SGD=X","DZDUSD=X","KWDUSD=X"]
-        for word in wordlist:
+        
+        words= redis_inst.keys()
+        for word in words :
+          word=str(word)
+          word=word[2:len(word)-1]
           for key in redis_instance.keys("*"):
              k=str(key)
             

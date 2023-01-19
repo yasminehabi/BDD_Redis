@@ -1,9 +1,15 @@
+
+{% load static %}
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
+  
     <head>
         <meta charset="utf-8">
         <title>Home PAGE </title>
-        <link rel="stylesheet" href="./home.css"> 
+        <link rel="stylesheet" href={% static 'home.css'%}> 
 
         <script src="https://kit.fontawesome.com/5b0c203f04.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -92,6 +98,7 @@
           <li><a href="#">Home</a></li>
           <li><a href="#sec_far_down">FAQs</a></li>
           <li><a href="#sec2_far_down">A propos de nous</a></li>
+          
         </ul>
        
         </nav>
@@ -99,7 +106,8 @@
       <p1>BYB</p1>
       <div class="logo">BoostYourBusiness</div>
         <div class="search">
-            <input type="search" placeholder=" Type To Search ...">
+          <form action={% url 'home_view' %}>
+            <button type="submit">ajouter</button>
         </div>
     <h3>Consultez les sites des entreprises les plus populaires en ce moment sur votre site BYB ! </h3>
     <h5>Affichage maximum de 20 entreprises <br>
@@ -121,6 +129,7 @@
     <div class="icon4">
         <i class="fa-brands fa-google"></i>
     </div> -->
+
     <h1>{{ items.i }}</h>
     <table class="content-table">
 
@@ -132,24 +141,27 @@
             <th>Afficher ses actions</th>
           </tr>
         </thead>
-        <tbody>
+        <body>
           {% for key, value in items.items %}
           <tr>
             <td>{{ key }}</td>
             <td>{{ value }}</td>
             
-            <td><button2 type="button">Afficher</button></td>
+            <td><form action={% url 'action' %}>
+              <button type="submit">Click me</button></td>
           </tr>
           {% endfor %}
         </tbody>
+
       </table>
+
 
     <br>
     <br>
     <div class="p2">
         <p2>*Les chiffres d'affaires ainsi que les actions des entreprises changent ultérieurement . <br> Avec BYB soyez certain que vous consultez que les nouveautés.</p2>
         </div>
-       <img class="img1" src = "faqs.svg">
+       <img class="img1" src = {% static 'images/faqs.svg'%}>
         <div class="p3">
             <p3 id="sec_far_down">FAQ à propos des entreprises les plus polpulaires et influentes au monde </p3>
             </div>
@@ -166,10 +178,10 @@
                     <div class="p7">
                       <p7 id ="sec2_far_down">Découvrez plus notre site BYB ici !</p7>
                       </div>
-                      <img class="img2" src = "img2.svg">
-                      <img class="img3" src = "brs.jpeg">
-                      <img class="img4" src = "ent.jpeg">
-                      <img class="img5" src = "dev.jpeg">
+                      <img class="img2" src = {% static 'images/img2.svg'%}>
+                      <img class="img3" src = {% static 'images/brs.jpeg'%}>
+                      <img class="img4" src = {% static 'images/ent.jpeg'%}>
+                      <img class="img5" src = {% static 'images/dev.jpeg'%}>
                       <div class="p8">
                         <p8> 
                           Consultez tous qui concerne les changements <br>des bourses  mondiales du moment <br>actuelle et même <br>  celle que notre site prédicte dans quelques jours<br> plutard , grâce à son intelligence et sa performance .
